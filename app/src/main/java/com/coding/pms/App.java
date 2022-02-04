@@ -2,21 +2,28 @@ package com.coding.pms;
 
 public class App {
 
-  public static int solution(int price, int money, int count) {
+  public static int solution(int[] citations) {
+    int answer = 0;
+    int n = citations.length;
     int sum = 0;
-    int p = 0;
-    for (int i = 1; i <= count; i++) {
-      p = price*i;
-      sum = sum + p;
+
+    for (int i = 0; i < n; i++) {
+      sum = sum + citations[i];
     }
-    if (sum > money) {
-      return sum - money;
+
+    float aver = (float) sum / n ;
+    System.out.println(aver);
+
+    for (int j = 0; j < n; j++) {
+      if (aver <= citations[j]) {
+        answer++;
+      }
     }
-    return 0;
+    return answer;
   }
 
   public static void main(String[] args) {
-
-    System.out.println(solution(5, 20, 4));
+    int[] a = {1, 2, 3, 4, 1};
+    System.out.println(solution(a));
   }
 }
